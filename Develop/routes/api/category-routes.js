@@ -1,5 +1,8 @@
 const router = require('express').Router();
-const { Category, Product } = require('../../models');
+const { sequelize } = require('../../models/Product');
+
+const { Category, Product, ProductTag, Tag } = require('../../models');
+
 
 router.get('/', (req, res) => {
   Category.findAll({
