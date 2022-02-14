@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
-// The `/api/categories` endpoint
-
 router.get('/', (req, res) => {
   Category.findAll({
     include: {
@@ -47,11 +45,11 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   Category.update(
     {
-      category_name: req.body.category_name,
+      category_name: req.body.category_name
     },
     {
       where: {
-        id: req.params.id,
+        id: req.params.id
       }
     }
   )

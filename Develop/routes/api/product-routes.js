@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
       }
     ],
   })
-  .then((productData) => res.json(productName))
+  .then((productData) => res.json(productData))
   .catch((err) => {
     res.status(500).json(err);
   });
@@ -68,7 +68,6 @@ router.post('/', (req, res) => {
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
     .catch((err) => {
-      console.log(err);
       res.status(400).json(err);
     });
 });
@@ -77,7 +76,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   Product.update(req.body, {
     where: {
-      id: req.params.id,
+      id: req.params.id
     },
   })
     .then((product) => {
@@ -90,7 +89,7 @@ router.put('/:id', (req, res) => {
         .map((tag_id) => {
           return {
             product_id: req.params.id,
-            tag_id,
+            tag_id
           };
         });
       const productTagsToRemove = productTags
